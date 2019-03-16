@@ -44,8 +44,6 @@ namespace DutchTreat.Controllers
 
         public IActionResult AboutUs()
         {
-            ViewBag.Title = "About Us";
-
             return View();
         }
     }
