@@ -16,10 +16,11 @@ namespace DutchTreat
     {
         public static void Main(string[] args)
         {
-            var host = CreateWebHostBuilder(args);
-
+            //var host = CreateWebHostBuilder(args);
+            //SeedDb(host);
+            //host.Run();
+            var host = CreateWebHostBuilder(args).Build();
             SeedDb(host);
-
             host.Run();
         }
 
@@ -29,15 +30,14 @@ namespace DutchTreat
             using(var scope = scopeFactory.CreateScope())
             {
                 var seeder = scope.ServiceProvider.GetService<DutchSeeder>();
-                seeder.Seed();
+                seeder.SeedAsync().Wait();
             }
         }
 
-        public static IWebHost CreateWebHostBuilder(string[] args) =>
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration(SetupConfiguration)
-                .UseStartup<Startup>()
-                .Build();
+                .UseStartup<Startup>();
 
         private static void SetupConfiguration(WebHostBuilderContext ctx, IConfigurationBuilder builder)
         {
