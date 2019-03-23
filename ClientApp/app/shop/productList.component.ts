@@ -1,10 +1,11 @@
 ﻿import { Component, OnInit } from "@angular/core";
 import { DataService } from "../shared/dataService";
+import { Product } from "../shared/product";
 
 @Component({
     selector: "product-list",
     templateUrl: "productList.component.html",
-    styleUrls:[]
+    styleUrls:[ "productList.component.css" ]
 })
 export class ProductList implements OnInit {
 
@@ -12,8 +13,7 @@ export class ProductList implements OnInit {
         
     }
 
-    public products = [
-    ];
+    public products:Product[] = [];
 
     ngOnInit(): void {
         this.data.loadProducts()
@@ -22,5 +22,10 @@ export class ProductList implements OnInit {
                     this.products = this.data.products;
                 }
             });
+    }
+
+    addProduct(product: Product) {
+        console.log(product);
+        this.data.AddToOrder(product);
     }
 }

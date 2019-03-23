@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { APP_BASE_HREF } from '@angular/common';
 import { ProductList } from './shop/productList.component';
 import { DataService } from './shared/dataService';
+import { Cart } from "./shop/cart.component";
 
 @NgModule({
     declarations: [
         AppComponent,
-        ProductList
+        ProductList,
+        Cart
     ],
     imports: [
         BrowserModule,
@@ -19,7 +21,7 @@ import { DataService } from './shared/dataService';
         HttpClientModule
     ],
     providers: [
-        { provide: APP_BASE_HREF, useValue: '/App/Shop' },
+        { provide: APP_BASE_HREF, useValue: '/' },
         DataService
     ],
     bootstrap: [AppComponent]
