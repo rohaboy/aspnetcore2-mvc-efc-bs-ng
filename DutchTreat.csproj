@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\lib\dist\**" />
+    <Content Remove="wwwroot\lib\dist\**" />
+    <EmbeddedResource Remove="wwwroot\lib\dist\**" />
+    <None Remove="wwwroot\lib\dist\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="wwwroot\ts\main.ts" />
     <Content Remove="wwwroot\ts\storecustomer.ts" />
   </ItemGroup>
